@@ -1,0 +1,21 @@
+        /* Add this to your global styles or the component's stylesheet */
+@keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .style-card {
+    background: linear-gradient(270deg, #df0808, #002564); /* Example gradient */
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
+    color: #fff; /* Ensures text is readable */
+    border-radius: 0.5rem;
+  }
+  

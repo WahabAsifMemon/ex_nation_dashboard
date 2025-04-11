@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     this.http.post('admin-login', this.loginForm.value, false).subscribe((res: any) => {
       console.log(res, "hello");
       localStorage.setItem('token', JSON.stringify(res?.access_token))
-      this.router.navigate(['/users'])
+      this.router.navigate(['/dashboard/home'])
     })   
   }
 }

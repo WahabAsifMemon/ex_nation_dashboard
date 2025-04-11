@@ -8,6 +8,7 @@ import { HelpComponent } from './help/help.component';
 import { CategoryComponent } from './category/category.component';
 import { SubCategoryComponent } from './sub_category/sub_category.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
+import { HomeComponent } from './home/home.component';
 // import { HomeComponent } from './home/home.component';
 
 
@@ -24,6 +25,10 @@ const routes: Routes = [
 
 
 
+      {
+        path: 'home',
+        component: HomeComponent,
+      },
 
       {
         path: 'organization-podcast',

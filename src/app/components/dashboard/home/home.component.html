@@ -1,0 +1,303 @@
+<app-breadcrumb
+  [title]="'Home'"
+  [items]="['Dashboard']"
+  [active_item]="'Home'"
+  icon="home"
+></app-breadcrumb>
+<div class="container-fluid">
+  <div class="row">
+    <!-- Users -->
+<div class="col-sm-6 col-xl-3 col-lg-6">
+  <div class="card o-hidden">
+    <div class="b-r-4 card-body style-card">
+      <div class="media static-top-widget">
+        <div class="align-self-center text-center">
+          <app-feather-icons [icon]="'user-plus'"></app-feather-icons>
+        </div>
+        <div class="media-body">
+          <span class="m-0">Users</span>
+          <h4 class="mb-0 counter" [CountTo]="allUsers" [from]="0" [duration]="1">
+            {{ allUsers }}
+          </h4>
+          <i class="icon-bg" data-feather="user-plus"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- allChurches -->
+<div class="col-sm-6 col-xl-3 col-lg-6">
+  <div class="card o-hidden">
+    <div class="b-r-4 card-body style-card">
+      <div class="media static-top-widget">
+        <div class="align-self-center text-center">
+          <app-feather-icons [icon]="'home'"></app-feather-icons>
+        </div>
+        <div class="media-body">
+          <span class="m-0">Churches</span>
+          <h4 class="mb-0 counter" [CountTo]="allChurches" [from]="0" [duration]="1">
+            {{ allChurches }}
+          </h4>
+          <i class="icon-bg" data-feather="home"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Fellowship Events -->
+<div class="col-sm-6 col-xl-3 col-lg-6">
+  <div class="card o-hidden">
+    <div class="b-r-4 card-body style-card">
+      <div class="media static-top-widget">
+        <div class="align-self-center text-center">
+          <app-feather-icons [icon]="'calendar'"></app-feather-icons>
+        </div>
+        <div class="media-body">
+          <span class="m-0">Fellowship Events</span>
+          <h4 class="mb-0 counter" [CountTo]="allFellowshipEvents" [from]="0" [duration]="1">
+            {{ allFellowshipEvents }}
+          </h4>
+          <i class="icon-bg" data-feather="calendar"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Podcasts -->
+<div class="col-sm-6 col-xl-3 col-lg-6">
+  <div class="card o-hidden">
+    <div class="b-r-4 card-body style-card">
+      <div class="media static-top-widget">
+        <div class="align-self-center text-center">
+          <app-feather-icons [icon]="'mic'"></app-feather-icons>
+        </div>
+        <div class="media-body">
+          <span class="m-0">Podcasts</span>
+          <h4 class="mb-0 counter" [CountTo]="allPodcasts" [from]="0" [duration]="1">
+            {{ allPodcasts }}
+          </h4>
+          <i class="icon-bg" data-feather="mic"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-6 col-xl-3 col-lg-6">
+  <div class="card o-hidden">
+    <div class=" b-r-4 card-body style-card">
+      <div class="media static-top-widget">
+        <div class="align-self-center text-center">
+          <app-feather-icons [icon]="'users'"></app-feather-icons>
+        </div>
+        <div class="media-body">
+          <span class="m-0">Conferences</span>
+          <h4 class="mb-0 counter" [CountTo]="allConferences" [from]="0" [duration]="1">
+            {{ allConferences }}
+          </h4>
+          <i class="icon-bg" data-feather="users"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="col-sm-6 col-xl-3 col-lg-6">
+  <div class="card o-hidden">
+    <div class="b-r-4 card-body style-card">
+      <div class="media static-top-widget">
+        <div class="align-self-center text-center">
+          <app-feather-icons [icon]="'heart'"></app-feather-icons>
+        </div>
+        <div class="media-body">
+          <span class="m-0">Nonprofits</span>
+          <h4 class="mb-0 counter" [CountTo]="allNonprofits" [from]="0" [duration]="1">
+            {{ allNonprofits }}
+          </h4>
+          <i class="icon-bg" data-feather="heart"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="col-sm-6 col-xl-3 col-lg-6">
+  <div class="card o-hidden">
+    <div class="b-r-4 card-body style-card">
+      <div class="media static-top-widget">
+        <div class="align-self-center text-center">
+          <app-feather-icons [icon]="'flag'"></app-feather-icons>
+        </div>
+        <div class="media-body">
+          <span class="m-0">Political</span>
+          <h4 class="mb-0 counter" [CountTo]="allPolitical" [from]="0" [duration]="1">
+            {{ allPolitical }}
+          </h4>
+          <i class="icon-bg" data-feather="flag"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Total Revenue -->
+<div class="col-sm-6 col-xl-3 col-lg-6">
+  <div class="card o-hidden">
+    <div class="b-r-4 card-body style-card">
+      <div class="media static-top-widget">
+        <div class="align-self-center text-center">
+          <app-feather-icons [icon]="'dollar-sign'"></app-feather-icons>
+        </div>
+        <div class="media-body">
+          <span class="m-0">Total Revenue</span>
+          <h4 class="mb-0 counter" [CountTo]="totalRevenue" [from]="0" [duration]="1">
+            ${{ totalRevenue }}
+          </h4>
+          <i class="icon-bg" data-feather="dollar-sign"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- This Week Revenue -->
+<div class="col-sm-6 col-xl-3 col-lg-6">
+  <div class="card o-hidden">
+    <div class=" b-r-4 card-body style-card">
+      <div class="media static-top-widget">
+        <div class="align-self-center text-center">
+          <app-feather-icons [icon]="'bar-chart'"></app-feather-icons>
+        </div>
+        <div class="media-body">
+          <span class="m-0">This Week Revenue</span>
+          <h4 class="mb-0 counter" [CountTo]="weekRevenue" [from]="0" [duration]="1">
+            {{ weekRevenue }}
+          </h4>
+          <i class="icon-bg" data-feather="bar-chart"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- This Month Revenue -->
+<div class="col-sm-6 col-xl-3 col-lg-6">
+  <div class="card o-hidden">
+    <div class="bg-dark b-r-4 card-body style-card">
+      <div class="media static-top-widget">
+        <div class="align-self-center text-center">
+          <app-feather-icons [icon]="'calendar'"></app-feather-icons>
+        </div>
+        <div class="media-body">
+          <span class="m-0">This Month Revenue</span>
+          <h4 class="mb-0 counter" [CountTo]="monthRevenue" [from]="0" [duration]="1">
+            {{ monthRevenue }}
+          </h4>
+          <i class="icon-bg" data-feather="calendar"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+</div>
+
+
+
+<div class="card">
+  <div class="card-header">
+    <h5>Users</h5>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div
+        class="col-sm-6 d-flex justify-content-start align-items-center"
+      >
+        <div class="searchField mt-1 w-100">
+          <input
+            type="text"
+            [(ngModel)]="searchInput"
+            placeholder="Search"
+            class="w-100 white"
+          />  
+          <i class="fa fa-search"></i>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="order-history table-responsive wishlist">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Business Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container
+                *ngIf="
+                  (users | filter : searchInput)?.length;
+                  else noData
+                "
+              >
+                <tr
+                  *ngFor="
+                    let i = index;
+                    let item;
+                    of: users
+                      | filter : searchInput
+                      | paginate
+                        : {
+                            itemsPerPage: 5,
+                            currentPage: duePage,
+                            totalItems: total
+                          }
+                  "
+                >
+                  <th scope="row">{{ item?.id }}</th>
+                  <td>{{ item?.name}}</td>
+                  <td>{{ item?.email ? item?.email : "N/A" }}</td>
+                  <td>{{ item?.phone ? item?.phone : "N/A"   }}</td>
+                  <td>{{ item?.business_type ? item?.business_type : "N/A" }}</td>
+    
+                 
+                </tr>
+              </ng-container>
+              <ng-template #noData>
+                <tr *ngIf="users?.length">
+                  <td colspan="5" class="text-center white">
+                    No Matching Data Available
+                  </td>
+                </tr>
+              </ng-template>
+              <tr *ngIf="!users?.length">
+                <td class="text-center white" colspan="5">
+                  No data available
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div
+        class="col-sm-12 d-flex justify-content-end"
+        *ngIf="users?.length"
+      >
+        <pagination-controls (pageChange)="duePage = $event">
+        </pagination-controls>
+      </div>
+    </div>
+  </div>
+  <!-- Container-fluid Ends-->
+</div>
