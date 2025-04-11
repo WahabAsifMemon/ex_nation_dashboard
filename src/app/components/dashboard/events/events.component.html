@@ -57,6 +57,7 @@
                       <th scope="col">Heading</th>
                       <th scope="col">Event Type</th>
                       <th scope="col">Event Date</th>
+                      <th scope="col">Banner</th>
                       <th scope="col">User</th>
                     </tr>
                   </thead>
@@ -76,6 +77,10 @@
                         <td>{{ item?.heading }}</td>
                         <td>{{ item?.event_type }}</td>
                         <td>{{ item?.event_date }}</td>
+                        <td>
+                          <img [src]="item?.banner" alt="Banner" style="width: 80px; height: auto; object-fit: cover;" />
+                        </td>
+                        
                         <td>{{ item?.user?.name }}</td>
                       </tr>
                     </ng-container>

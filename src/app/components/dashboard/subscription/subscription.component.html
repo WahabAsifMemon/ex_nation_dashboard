@@ -1,0 +1,83 @@
+<app-breadcrumb [title]="'Subsription'" [items]="['Dashboard']" [active_item]="'Subsription'"
+  icon="dollar-sign"></app-breadcrumb>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 btnPadding">
+      <div class="card">
+        <div class="card-header">
+          <h5>Subsriptions</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6 d-flex justify-content-start align-items-center">
+              <div class="searchField mt-1 w-100">
+                <input type="text" [(ngModel)]="searchInput" placeholder="Search" class="w-100 white" />
+                <i class="fa fa-search"></i>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="order-history table-responsive wishlist">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Id</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Amount</th>
+                      <th scope="col">Currency</th>
+                      <th scope="col">Created At</th>
+                      <th scope="col">Expires At</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <ng-container *ngIf="
+                        (subscriptions | filter : searchInput)?.length;
+                        else noData
+                      ">
+                      <tr *ngFor="
+                          let i = index;
+                          let item;
+                          of: subscriptions
+                            | filter : searchInput
+                            | paginate
+                              : {
+                                  itemsPerPage: 5,
+                                  currentPage: duePage,
+                                  totalItems: total
+                                }
+                        ">
+                        <th scope="row">{{ item?.id }}</th>
+                        <td>{{ item?.user?.name || 'N/A' }}</td>
+                        <td>{{ item?.amount || 'N/A' }}</td>
+                        <td>{{ item?.currency || 'N/A' }}</td>
+                        <td>{{ item?.created_at | date: 'medium' }}</td>
+
+                        <td>{{ item?.expires_at  | date: 'medium'}}</td>
+                      </tr>
+                    </ng-container>
+                    <ng-template #noData>
+                      <tr *ngIf="subscriptions?.length">
+                        <td colspan="6" class="text-center white">
+                          No Matching Data Available
+                        </td>
+                      </tr>
+                    </ng-template>
+                    <tr *ngIf="!subscriptions?.length">
+                      <td class="text-center white" colspan="6">
+                        No data available
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="col-sm-12 d-flex justify-content-end" *ngIf="subscriptions?.length">
+              <pagination-controls (pageChange)="duePage = $event">
+              </pagination-controls>
+            </div>
+          </div>
+        </div>
+        <!-- Container-fluid Ends-->
+      </div>
+    </div>
+  </div>
+</div>

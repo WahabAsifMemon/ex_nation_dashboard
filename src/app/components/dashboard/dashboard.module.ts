@@ -17,6 +17,7 @@ import { TermsConditionComponent } from './terms-condition/terms-condition.compo
 import { HelpComponent } from './help/help.component';
 import { CategoryComponent } from './category/category.component';
 import { SubCategoryComponent } from './sub_category/sub_category.component';
+import { SubscriptionComponent } from './subscription/subscription.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SubCategoryComponent } from './sub_category/sub_category.component';
     TermsConditionComponent,
     HelpComponent,
     CategoryComponent,
-    SubCategoryComponent
+    SubCategoryComponent,
+    SubscriptionComponent
   ],
   imports: [
     CommonModule,

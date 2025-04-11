@@ -38,7 +38,7 @@
               <div class="col-sm-12 col-lg-4 order-sm-0 order-xl-1">
                 <div class="user-designation">
                   <div class="title">
-                    <a>{{user?.first_name}} </a>
+                    <a>{{user?.name}} </a>
                   </div>
                 </div>
               </div>
@@ -78,16 +78,94 @@
         </div>
       </div>
 
-      <!-- <div class="col-sm-12 btnPadding">
-        <div class="card">
+      <div class="col-sm-12 btnPadding">
+        <div class="card" >
           <div class="card-header">
-            <h5>User Category</h5>
+            <h5>Active Events</h5>
           </div>
           <div class="card-body">
             <div class="row">
               <div class="col-sm-6 d-flex justify-content-start align-items-center">
                 <div class="searchField mt-1 w-100">
-                  <input type="text" [(ngModel)]="searchInput" placeholder="Search" class="w-100 white" />
+                  <input
+                    type="text"
+                    [(ngModel)]="searchInput"
+                    placeholder="Search"
+                    class="w-100 white"
+                  />
+                  <i class="fa fa-search"></i>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="order-history table-responsive wishlist">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Id</th>
+                      <th scope="col">Heading</th>
+                      <th scope="col">Event Type</th>
+                      <th scope="col">Event Date</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <ng-container
+                        *ngIf="(active_events | filter: searchInput)?.length; else noData"
+                      >
+                        <tr
+                          *ngFor="
+                            let item of active_events
+                              | filter: searchInput
+                              | paginate: { itemsPerPage: 5, currentPage: duePage }
+                          "
+                        >
+                        <th scope="row">{{ item?.id }}</th>
+                        <td>{{ item?.heading }}</td>
+                        <td>{{ item?.event_type }}</td>
+                        <td>{{ item?.event_date }}</td>
+                        </tr>
+                      </ng-container>
+                      <ng-template #noData>
+                        <tr *ngIf="active_events?.length">
+                          <td colspan="4" class="text-center white">
+                            No Matching Data Available
+                          </td>
+                        </tr>
+                      </ng-template>
+                      <tr *ngIf="!active_events?.length">
+                        <td class="text-center white" colspan="6">
+                          No data available
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div
+                class="col-sm-12 d-flex justify-content-end"
+                *ngIf="active_events?.length"
+              >
+                <pagination-controls (pageChange)="duePage = $event"></pagination-controls>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="card" >
+          <div class="card-header">
+            <h5>User Categories</h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-6 d-flex justify-content-start align-items-center">
+                <div class="searchField mt-1 w-100">
+                  <input
+                    type="text"
+                    [(ngModel)]="searchInput"
+                    placeholder="Search"
+                    class="w-100 white"
+                  />
                   <i class="fa fa-search"></i>
                 </div>
               </div>
@@ -106,32 +184,35 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <ng-container *ngIf="(user?.user_category | filter: searchInput)?.length; else noData">
-                        <tr *ngFor="
-                          let item of user?.user_category
-                            | filter: searchInput
-                            | paginate: { itemsPerPage: 5, currentPage: duePage }
-                        ">
-                          <th scope="row">{{ item?.id }}</th>
-                          <td>{{ item?.category || 'N/A'}}</td>
-                          <td><span [ngbTooltip]="item?.welcome_note" placement="top" class="pointer">
-                              {{ item?.welcome_note | slice:0:50 }}
-                            </span>
-                          </td>
-                          <td>{{ item?.duration || 'N/A'}}</td>
-                          <td>${{ item?.price || 'N/A'}}</td>
-                          <td>{{ item?.currency || 'N/A' }}</td>
+                      <ng-container
+                        *ngIf="(user_categories | filter: searchInput)?.length; else noData"
+                      >
+                        <tr
+                          *ngFor="
+                            let item of user_categories
+                              | filter: searchInput
+                              | paginate: { itemsPerPage: 5, currentPage: duePage }
+                          "
+                        >
+                        <th scope="row">{{ item?.id }}</th>
+                        <td>{{ item?.category || 'N/A'}}</td>
+                        <td><span [ngbTooltip]="item?.welcome_note" placement="top" class="pointer">
+                            {{ item?.welcome_note | slice:0:50 }}
+                          </span>
+                        </td>
+                        <td>{{ item?.duration || 'N/A'}}</td>
+                        <td>${{ item?.price || 'N/A'}}</td>
+                        <td>{{ item?.currency || 'N/A' }}</td>
                         </tr>
                       </ng-container>
-                      
                       <ng-template #noData>
-                        <tr *ngIf="user?.length">
+                        <tr *ngIf="user_categories?.length">
                           <td colspan="6" class="text-center white">
                             No Matching Data Available
                           </td>
                         </tr>
                       </ng-template>
-                      <tr *ngIf="!user?.length">
+                      <tr *ngIf="!user_categories?.length">
                         <td class="text-center white" colspan="6">
                           No data available
                         </td>
@@ -140,7 +221,10 @@
                   </table>
                 </div>
               </div>
-              <div class="col-sm-12 d-flex justify-content-end" *ngIf="user?.length">
+              <div
+                class="col-sm-12 d-flex justify-content-end"
+                *ngIf="user_categories?.length"
+              >
                 <pagination-controls (pageChange)="duePage = $event"></pagination-controls>
               </div>
             </div>
@@ -148,10 +232,93 @@
         </div>
 
 
+        <div class="card">
+          <div class="card-header">
+            <h5>User Jobs</h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-6 d-flex justify-content-start align-items-center">
+                <div class="searchField mt-1 w-100">
+                  <input
+                    type="text"
+                    [(ngModel)]="searchInput"
+                    placeholder="Search"
+                    class="w-100 white"
+                  />
+                  <i class="fa fa-search"></i>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="order-history table-responsive wishlist">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Position</th>
+                        <th scope="col">Pay Type</th>
+                        <th scope="col">Salary</th>
+                        <th scope="col">Job Type</th>
+                        <th scope="col">Start Date</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <ng-container
+                        *ngIf="(user_jobs | filter: searchInput)?.length; else noDataJobs"
+                      >
+                        <tr
+                          *ngFor="
+                            let job of user_jobs
+                              | filter: searchInput
+                              | paginate: { itemsPerPage: 5, currentPage: duePage }
+                          "
+                        >
+                          <td>{{ job?.id }}</td>
+                          <td>{{ job?.position }}</td>
+                          <td>{{ job?.pay_type }}</td>
+                          <td>{{ job?.salary }}</td>
+                          <td>{{ job?.job_type }}</td>
+                          <td>{{ job?.start_date | date: 'medium' }}</td>
+                          <td>{{ job?.email }}</td>
+                          <td>{{ job?.phone }}</td>
+                        </tr>
+                      </ng-container>
+                      <ng-template #noDataJobs>
+                        <tr *ngIf="user_jobs?.length">
+                          <td colspan="8" class="text-center white">
+                            No Matching Jobs Available
+                          </td>
+                        </tr>
+                      </ng-template>
+                      <tr *ngIf="!user_jobs?.length">
+                        <td class="text-center white" colspan="8">
+                          No data available
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div
+                class="col-sm-12 d-flex justify-content-end"
+                *ngIf="user_jobs?.length"
+              >
+                <pagination-controls (pageChange)="duePage = $event"></pagination-controls>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+  
 
 
 
-      </div> -->
+
+
+      </div>
     </div>
   </div>
 </div>

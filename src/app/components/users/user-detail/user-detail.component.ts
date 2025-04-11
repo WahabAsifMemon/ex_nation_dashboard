@@ -12,7 +12,8 @@ import { HttpService } from 'src/app/shared/services/http.service';
 export class UserDetailComponent {
   public user: any;
   user_categories: any;
-  active_events: any[] = [];
+  public active_events: any;
+  public user_jobs: any;
   public postLength: number = 0;
   public duePage!: any;
   public total!: any;
@@ -37,9 +38,12 @@ export class UserDetailComponent {
       const requestBody = { user_id };
       const res: any = await this.http.post(`user-profile`, requestBody, true).toPromise();
       this.user = res?.data;
-      this.user_categories = res?.data?.user_category;
+      this.user_categories = res?.data?.user_category ? [res?.data?.user_category] : [];
 
-      this.active_events = res.user.active_event|| [];  // Ensure it's an array
+      this.active_events = this.user?.active_event || [];
+      this.user_jobs = this.user?.jobs || [];
+
+      console.log('>',  this.active_events)
       console.log(res);
     } catch (error) {
       console.error('Error fetching users:', error);
