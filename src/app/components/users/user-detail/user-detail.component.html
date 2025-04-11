@@ -1,0 +1,157 @@
+<app-breadcrumb [title]="'User'" [active_item]="'User'" icon="user"></app-breadcrumb>
+<div class="container-fluid">
+  <div class="user-profile">
+    <div class="row">
+      <!-- user profile first-style start-->
+      <div class="col-sm-12">
+        <div class="card hovercard text-center">
+          <div class="user-image">
+            <div class="avatar">
+              <app-img alt="userImage" [src]="user?.profile_pic"></app-img>
+            </div>
+          </div>
+          <div class="info">
+            <div class="row">
+              <div class="col-sm-6 col-lg-4 order-sm-1 order-xl-0">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="ttl-info text-left">
+
+                      <h6>
+                        <i class="fa fa-envelope "></i> Email
+                      </h6>
+
+
+                      <span>{{user?.email ? user?.email : 'N/A'}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="ttl-info text-left">
+                      <h6><i class="fa fa-user m-1"></i>Role</h6>
+                      <span>{{user?.role ? user?.role : 'N/A'}}</span>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+              <div class="col-sm-12 col-lg-4 order-sm-0 order-xl-1">
+                <div class="user-designation">
+                  <div class="title">
+                    <a>{{user?.first_name}} </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-lg-4 order-sm-2 order-xl-2">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="ttl-info text-left">
+                      <h6><i class="fa fa-phone m-1"></i>Contact No</h6>
+                      <span>{{user?.phone ? user?.phone : 'N/A'}}</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="ttl-info text-left">
+                      <h6><i class="fa fa-location-arrow m-1"></i>Location</h6>
+                      <span>{{user?.address ? user?.address : 'N/A'}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <hr />
+            <div class="follow">
+              <div class="row">
+                <div class="col-12 text-center border-right">
+                  <div
+                    class="follow-num"
+                    [CountTo]="educationLength"
+                    [from]="0"
+                    [duration]="1"
+                  ></div>
+                  <h6 *ngIf="educationLength == 0">0</h6>
+                  <span>Total educations</span>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="col-sm-12 btnPadding">
+        <div class="card">
+          <div class="card-header">
+            <h5>User Category</h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-6 d-flex justify-content-start align-items-center">
+                <div class="searchField mt-1 w-100">
+                  <input type="text" [(ngModel)]="searchInput" placeholder="Search" class="w-100 white" />
+                  <i class="fa fa-search"></i>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="order-history table-responsive wishlist">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Welcome Note</th>
+                        <th scope="col">Duration</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Currency</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <ng-container *ngIf="(user?.user_category | filter: searchInput)?.length; else noData">
+                        <tr *ngFor="
+                          let item of user?.user_category
+                            | filter: searchInput
+                            | paginate: { itemsPerPage: 5, currentPage: duePage }
+                        ">
+                          <th scope="row">{{ item?.id }}</th>
+                          <td>{{ item?.category || 'N/A'}}</td>
+                          <td><span [ngbTooltip]="item?.welcome_note" placement="top" class="pointer">
+                              {{ item?.welcome_note | slice:0:50 }}
+                            </span>
+                          </td>
+                          <td>{{ item?.duration || 'N/A'}}</td>
+                          <td>${{ item?.price || 'N/A'}}</td>
+                          <td>{{ item?.currency || 'N/A' }}</td>
+                        </tr>
+                      </ng-container>
+                      
+                      <ng-template #noData>
+                        <tr *ngIf="user?.length">
+                          <td colspan="6" class="text-center white">
+                            No Matching Data Available
+                          </td>
+                        </tr>
+                      </ng-template>
+                      <tr *ngIf="!user?.length">
+                        <td class="text-center white" colspan="6">
+                          No data available
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="col-sm-12 d-flex justify-content-end" *ngIf="user?.length">
+                <pagination-controls (pageChange)="duePage = $event"></pagination-controls>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+      </div> -->
+    </div>
+  </div>
+</div>

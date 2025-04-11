@@ -1,0 +1,54 @@
+.loader--text {
+  top: 200%;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.loader--text:after {
+  content: "Loading";
+  font-weight: bold;
+  animation-name: loading-text;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+@keyframes loader {
+  15% {
+    transform: translateX(0);
+  }
+  45% {
+    transform: translateX(230px);
+  }
+  65% {
+    transform: translateX(230px);
+  }
+  95% {
+    transform: translateX(0);
+  }
+}
+@keyframes loading-text {
+  0% {
+    content: "Loading";
+  }
+  25% {
+    content: "Loading.";
+  }
+  50% {
+    content: "Loading..";
+  }
+  75% {
+    content: "Loading...";
+  }
+}
+
+.login-container {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.login-card {
+  // background-color: rgba(255, 255, 255, 0.8); /* Set the background color of the card with the same opacity as the container background */
+  padding: 20px;
+  border-radius: 10px;
+  // background: radial-gradient(#000000bd, transparent);
+}

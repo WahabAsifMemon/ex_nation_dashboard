@@ -1,0 +1,33 @@
+// .fa-link , .fa-house{
+//     padding-right: 6px;
+// }
+// li{
+//    margin-bottom:18px;
+// }
+.active{
+    .linkIcon{
+        color: #e8e6e9;
+        padding-right: 5px;
+    }
+}
+.linkIcon{
+    color: var(--theme-deafult);
+    padding-right: 5px;
+}
+.fa-bars{
+    color: white;
+    font-size: 18px;
+}
+
+.logo_Customize{
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.logo_Dark{
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-left: 60px;
+}

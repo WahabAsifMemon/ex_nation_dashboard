@@ -1,0 +1,130 @@
+<app-breadcrumb [title]="'Settings'" [items]="['Dashboard']" [active_item]="'Settings'" icon="settings"></app-breadcrumb>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 style="text-align: center; font-weight: 600; font-size: 33px; letter-spacing: 2px;">App Urls</h3>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="settingForm" class="theme-form">
+            <div class="form-group">
+              <label class="col-form-label">Address</label>
+              <div class="input-group">
+                <input class="form-control" type="text" required="" placeholder="Address"
+                  formControlName="address" />
+              </div>
+              <div *ngIf="settingForm.controls.address.invalid &&
+                    (settingForm.controls.address.dirty ||
+                      settingForm.controls.address.touched)">
+                <small class="text-danger">Address Url is required</small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-form-label">Email</label>
+              <div class="input-group">
+                <input class="form-control" type="email" required="" placeholder="Email" formControlName="email" />
+              </div>
+              <div *ngIf="settingForm.controls.email.invalid &&
+                (settingForm.controls.email.dirty ||
+                  settingForm.controls.email.touched)">
+                <small class="text-danger">Email is required</small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-form-label">Phone</label>
+              <div class="input-group">
+                <input class="form-control" type="number" required="" placeholder="Phone"
+                  formControlName="phone" />
+              </div>
+              <div *ngIf="settingForm.controls.phone.invalid &&
+                    (settingForm.controls.phone.dirty ||
+                      settingForm.controls.phone.touched)">
+                <small class="text-danger">Phone is required</small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-form-label">Facebook</label>
+              <div class="input-group">
+                <input class="form-control" type="text" required="" placeholder="Facebook"
+                  formControlName="fb" />
+              </div>
+              <div *ngIf="settingForm.controls.phone.invalid &&
+                    (settingForm.controls.phone.dirty ||
+                      settingForm.controls.phone.touched)">
+                <small class="text-danger">Phone is required</small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-form-label">Twitter</label>
+              <div class="input-group">
+                <input class="form-control" type="text" required="" placeholder="Twitter"
+                  formControlName="twitter" />
+              </div>
+              <div *ngIf="settingForm.controls.twitter.invalid &&
+                    (settingForm.controls.twitter.dirty ||
+                      settingForm.controls.twitter.touched)">
+                <small class="text-danger">Twitter is required</small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-form-label">Linkedin</label>
+              <div class="input-group">
+                <input class="form-control" type="text" required="" placeholder="Linkedin"
+                  formControlName="linkedin" />
+              </div>
+              <div *ngIf="settingForm.controls.linkedin.invalid &&
+                    (settingForm.controls.linkedin.dirty ||
+                      settingForm.controls.linkedin.touched)">
+                <small class="text-danger">Linkedin is required</small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-form-label">Latitude</label>
+              <div class="input-group">
+                <input class="form-control" type="text" required="" placeholder="Latitude"
+                  formControlName="lat" />
+              </div>
+              <div *ngIf="settingForm.controls.lat.invalid &&
+                    (settingForm.controls.lat.dirty ||
+                      settingForm.controls.lat.touched)">
+                <small class="text-danger">Latitude is required</small>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-form-label">Longitude</label>
+              <div class="input-group">
+                <input class="form-control" type="text" required="" placeholder="Longitude"
+                  formControlName="lng" />
+              </div>
+              <div *ngIf="settingForm.controls.lng.invalid &&
+                    (settingForm.controls.lng.dirty ||
+                      settingForm.controls.lng.touched)">
+                <small class="text-danger">Longitude is required</small>
+              </div>
+            </div>
+
+
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3 mt-3 ml-auto">
+      <button class="btn btn-primary btn-block" [disabled]="!settingForm.valid" (click)="saveSetting()" type="button">
+        <span>Save</span>
+      </button>
+    </div>
+  </div>
+</div>

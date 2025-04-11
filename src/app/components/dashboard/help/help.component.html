@@ -1,0 +1,106 @@
+<app-breadcrumb
+  [title]="'Inquries'"
+  [items]="['Dashboard']"
+  [active_item]="'Inquries'"
+  icon="help-circle"
+></app-breadcrumb>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 btnPadding">
+      <div class="card">
+        <div class="card-header">
+          <h5>Inquries</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div
+              class="col-sm-6 d-flex justify-content-start align-items-center"
+            >
+              <div class="searchField mt-1 w-100">
+                <input
+                  type="text"
+                  [(ngModel)]="searchInput"
+                  placeholder="Search"
+                  class="w-100 white"
+                />
+                <i class="fa fa-search"></i>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="order-history table-responsive wishlist">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Id</th>
+                      <th scope="col">First Name</th>
+                      <th scope="col">Last Name</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <ng-container
+                      *ngIf="
+                        (inquries | filter : searchInput)?.length;
+                        else noData
+                      "
+                    >
+                      <tr
+                        *ngFor="
+                          let i = index;
+                          let item;
+                          of: inquries
+                            | filter : searchInput
+                            | paginate
+                              : {
+                                  itemsPerPage: 5,
+                                  currentPage: duePage,
+                                  totalItems: total
+                                }
+                        "
+                      >
+                        <th scope="row">{{ item?.id }}</th> 
+                        <td>{{ item?.first_name || 'N\A'}}</td>
+                        <td>{{ item?.last_name || 'N\A'}}</td>
+                        <td>{{ item?.email || 'N\A'}}</td>
+
+
+
+                        <td><span [ngbTooltip]="item?.message" placement="top" class="pointer">{{ item?.message | slice:0:50 }}</span></td>
+                        
+                      </tr>
+                    </ng-container>
+                    <ng-template #noData>
+                      <tr *ngIf="inquries?.length">
+                        <td colspan="5" class="text-center white">
+                          No Matching Data Available
+                        </td>
+                      </tr>
+                    </ng-template>
+                    <tr *ngIf="!inquries?.length">
+                      <td class="text-center white" colspan="5">
+                        No data available
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div
+              class="col-sm-12 d-flex justify-content-end"
+              *ngIf="inquries?.length"
+            >
+              <pagination-controls (pageChange)="duePage = $event">
+              </pagination-controls>
+            </div>
+          </div>
+        </div>
+        <!-- Container-fluid Ends-->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

@@ -1,0 +1,57 @@
+<app-breadcrumb
+[title]="termForm?.get('heading')?.value"
+[items]="['Dashboard']"
+  [active_item]="termForm?.get('heading')?.value"
+  icon="help"
+></app-breadcrumb>
+<div class="container-fluid">
+    <div class="row">
+      
+      <div class="col-sm-12">
+        <form [formGroup]="termForm" class="form">
+          <div class="form-group mb-3">
+            <label for="heading">Heading</label>
+            <input
+              id="heading"
+              type="text"
+              class="form-control"
+              formControlName="heading"
+              placeholder="Enter heading"
+            />
+            <div
+              *ngIf="
+                termForm.controls.heading.invalid &&
+                (termForm.controls.heading.dirty || termForm.controls.heading.touched)
+              "
+            >
+              <small class="text-danger">Heading is required</small>
+            </div>
+          </div>
+
+          <ckeditor [config]="{ toolbar: [ 'heading', '|', 'bold', 'italic', 'bulletedList' ] }" [editor]="Editor" formControlName="content"></ckeditor>
+          <div
+              *ngIf="
+                termForm.controls.content.invalid &&
+                (termForm.controls.content.dirty ||
+                  termForm.controls.content.touched)
+              "
+            >
+              <small class="text-danger">Content is required</small>
+            </div>
+        </form>
+      </div>
+      <div class="col-lg-12 d-flex justify-content-end mt-3">
+        <button
+          class="btn btn-primary"
+          [disabled]="!termForm.valid"
+          (click)="save()"
+          type="button"
+        >
+        <span>
+           Save
+        </span>
+        
+        </button>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,105 @@
+<app-breadcrumb
+  [title]="'Events'"
+  [items]="['Dashboard']"
+  [active_item]="'Events'"
+  icon="help-circle"
+></app-breadcrumb>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 btnPadding">
+      <div class="card">
+        <div class="card-header">
+            <h5>All Events</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div
+              class="col-sm-6 d-flex justify-content-start align-items-center"
+            >
+              <div class="searchField mt-1 w-100">
+                <input
+                  type="text"
+                  [(ngModel)]="searchInput"
+                  placeholder="Search"
+                  class="w-100 white"
+                />
+                <i class="fa fa-search"></i>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    [class.active]="selectedTab === 'active'"
+                    (click)="onTabChange('active')"
+                    href="javascript:void(0)"
+                    >Active Events</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    [class.active]="selectedTab === 'inactive'"
+                    (click)="onTabChange('inactive')"
+                    href="javascript:void(0)"
+                    >Inactive Events</a
+                  >
+                </li>
+              </ul>
+              
+              <div class="order-history table-responsive wishlist">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Id</th>
+                      <th scope="col">Heading</th>
+                      <th scope="col">Event Type</th>
+                      <th scope="col">Event Date</th>
+                      <th scope="col">User</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <ng-container
+                      *ngIf="
+                        (selectedTab === 'active' ? activeEvents : inactiveEvents)?.length;
+                        else noData
+                      "
+                    >
+                      <tr
+                        *ngFor="
+                          let item of selectedTab === 'active' ? activeEvents : inactiveEvents
+                        "
+                      >
+                        <th scope="row">{{ item?.id }}</th>
+                        <td>{{ item?.heading }}</td>
+                        <td>{{ item?.event_type }}</td>
+                        <td>{{ item?.event_date }}</td>
+                        <td>{{ item?.user?.name }}</td>
+                      </tr>
+                    </ng-container>
+                    <ng-template #noData>
+                      <tr>
+                        <td colspan="5" class="text-center">
+                          No Events Available
+                        </td>
+                      </tr>
+                    </ng-template>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div
+              class="col-sm-12 d-flex justify-content-end"
+              *ngIf="(selectedTab === 'active' ? activeEvents : inactiveEvents)?.length"
+            >
+              <pagination-controls (pageChange)="duePage = $event">
+              </pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

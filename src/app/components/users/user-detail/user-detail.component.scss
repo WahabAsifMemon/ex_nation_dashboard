@@ -1,0 +1,47 @@
+.btnPadding{
+    padding-bottom: 6rem;
+}
+.colStyle{
+    background-color: #161f3c;
+    border-radius: 1rem;
+    padding: 1rem;
+    
+}
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+@media only screen and (max-width:768px){
+    .user-profile .hovercard .user-image{
+        height: unset !important;
+    }
+    .user-profile .hovercard .user-image .avatar {
+        margin-top: 0;
+        padding-top: 1rem;
+    }
+}
+
+.badge-success {
+    background-color: #c68b97; /* Green color */
+    color: white;
+    padding: 0.5em 0.75em;
+    border-radius: 0.25rem;
+    font-size: 0.9em;
+  }
+
+  .job-card {
+    margin-bottom: 20px; /* Spacing between cards */
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 14px;
+}
+
+  

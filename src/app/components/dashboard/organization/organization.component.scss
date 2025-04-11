@@ -1,0 +1,28 @@
+/* Button Margin and Padding */
+.btnMargin {
+    margin-right: 10px;
+  }
+  
+  .btnPadding {
+    padding-bottom: 6rem;
+  }
+  
+  /* Form Input Styles */
+  .form input {
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.3);
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    color: #000 !important;
+  }
+  
+ 
+
+
+  /* Placeholder Text Color */
+  .form input::placeholder {
+    color: #000 !important;
+  }
+  
+
+  

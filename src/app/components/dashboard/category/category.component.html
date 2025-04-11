@@ -1,0 +1,110 @@
+<app-breadcrumb
+  [title]="'Categories'"
+  [items]="['Dashboard']"
+  [active_item]="'Categories'"
+  icon="help-circle"
+></app-breadcrumb>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12 btnPadding">
+      <div class="card">
+        <div class="card-header">
+          <h5>Categories</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div
+              class="col-sm-6 d-flex justify-content-start align-items-center"
+            >
+              <div class="searchField mt-1 w-100">
+                <input
+                  type="text"
+                  [(ngModel)]="searchInput"
+                  placeholder="Search"
+                  class="w-100 white"
+                />
+                <i class="fa fa-search"></i>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="order-history table-responsive wishlist">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Id</th>
+                      <th scope="col">Category</th>
+                      <th scope="col">Welcome Note</th>
+                      <th scope="col">Duration</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Currency</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <ng-container
+                      *ngIf="
+                        (categories | filter : searchInput)?.length;
+                        else noData
+                      "
+                    >
+                      <tr
+                        *ngFor="
+                          let i = index;
+                          let item;
+                          of: categories
+                            | filter : searchInput
+                            | paginate
+                              : {
+                                  itemsPerPage: 5,
+                                  currentPage: duePage,
+                                  totalItems: total
+                                }
+                        "
+                      >
+                        <th scope="row">{{ item?.id }}</th> 
+                        <td>{{ item?.category || 'N\A'}}</td>
+                        <td><span [ngbTooltip]="item?.welcome_note" placement="top" class="pointer">{{ item?.welcome_note | slice:0:50 }}</span></td>
+                        <td>{{ item?.duration || 'N\A'}}</td>
+                      <td>${{ item?.price}}</td>
+                      <td>{{ item?.currency }}</td>
+
+
+
+
+                        
+                      </tr>
+                    </ng-container>
+                    <ng-template #noData>
+                      <tr *ngIf="categories?.length">
+                        <td colspan="5" class="text-center white">
+                          No Matching Data Available
+                        </td>
+                      </tr>
+                    </ng-template>
+                    <tr *ngIf="!categories?.length">
+                      <td class="text-center white" colspan="5">
+                        No data available
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div
+              class="col-sm-12 d-flex justify-content-end"
+              *ngIf="categories?.length"
+            >
+              <pagination-controls (pageChange)="duePage = $event">
+              </pagination-controls>
+            </div>
+          </div>
+        </div>
+        <!-- Container-fluid Ends-->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
