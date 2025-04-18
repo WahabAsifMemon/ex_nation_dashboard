@@ -103,6 +103,14 @@ export class UsersComponent {
         position: this.users?.length + 1,
       });
     }
+
+    // Remove null or undefined values
+  Object.keys(this.userForm.value).forEach((key) => {
+    if (this.userForm.value[key] == null) {
+      delete this.userForm.value[key];
+    }
+  });
+
     this.http
       .post('updateUser', this.userForm.value, true)
 
@@ -124,14 +132,13 @@ export class UsersComponent {
 
 
 
-  async stateItem(event: any, data: any) {
-    this.selectedUser = this.users?.find((e: any) => e?.id == event.id);
-    if (this.selectedUser) {
+  async stateItem(event: any, data: any, key: string) {
+    if (event) {
       const { id, name, phone, password,  business_name,
         business_address,
         country,
         city,
-        state, } = this.selectedUser || {};
+        state, } = event || {};
       this.userForm.patchValue({
         ...this.userForm.value,
         name,
@@ -146,10 +153,9 @@ export class UsersComponent {
 
       this.userForm.addControl('id', new FormControl(id));
       this.userForm.addControl(
-        'status',
-        new FormControl(data.target.checked ? 1 : 0)
+        key,
+        new FormControl(data.target.checked ? '1' : '0')
       );
-      console.log(this.userForm.value);
     }
 
     this.save(false);

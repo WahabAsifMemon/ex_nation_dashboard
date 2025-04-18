@@ -99,11 +99,11 @@ export class NavService implements OnDestroy {
           title: 'All Users',
           type: 'link',
         },
-        {
-          path: '/users/consumer',
-          title: 'All Consumers',
-          type: 'link',
-        },
+        // {
+        //   path: '/users/consumer',
+        //   title: 'All Consumers',
+        //   type: 'link',
+        // },
       ]
     },
 

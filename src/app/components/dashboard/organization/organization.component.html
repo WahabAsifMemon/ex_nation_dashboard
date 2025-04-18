@@ -24,6 +24,8 @@
                       <th scope="col">Email</th>
                       <th scope="col">Phone Number</th>
                       <th scope="col">Business Type</th>
+                      <th scope="col">Statement of faith</th>
+                      <th scope="col">Active status</th>
                       <th scope="col">Actions</th>
                     </tr>
                   </thead>
@@ -49,6 +51,36 @@
                         <td>{{ item?.email ? item?.email : "N/A" }}</td>
                         <td>{{ item?.phone ? item?.phone : "N/A" }}</td>
                         <td>{{ item?.business_type ? item?.business_type : "N/A" }}</td>
+                        <td>
+                          <div
+                            class="toggle d-flex align-items-center w-100 justify-content-center"
+                          >
+                            <input
+                              (change)="stateItem(item, $event, 'statement_of_faith')"
+                              class="checkBox"
+                              type="checkbox"
+                              [checked]="
+                                item?.statement_of_faith == '1' ? true : false
+                              "
+                              [id]="'user' + i"
+                            /><label [for]="'user' + i"></label>
+                          </div>
+                        </td>
+                        <td>
+                          <div
+                            class="toggle d-flex align-items-center w-100 justify-content-center"
+                          >
+                            <input
+                              (change)="stateItem(item, $event, 'status')"
+                              class="checkBox"
+                              type="checkbox"
+                              [checked]="
+                                item?.status == '1' ? true : false
+                              "
+                              [id]="'user' + i + i"
+                            /><label [for]="'user' + i + i"></label>
+                          </div>
+                        </td>
                         <td class="d-flex justify-content-center align-items-center">
                           <button class="actionbtn btn btn-primary" placement="top" ngbTooltip="{{ 'Edit ' + heading }}"
                             (click)="selectedUser = item; open(addModal, 'edit')">

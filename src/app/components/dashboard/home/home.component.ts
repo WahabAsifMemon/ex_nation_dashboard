@@ -61,9 +61,9 @@ export class HomeComponent implements OnInit {
       this.allNonprofits = res?.data?.['all-nonprofits'] || 0;
       this.allPodcasts = res?.data?.['all-podcasts'] || 0;
       
-      this.totalRevenue = res?.data?.['total-zevenue'] || 0;
-      this.weekRevenue = res?.data?.['this-week-zevenue'] || 0;
-      this.monthRevenue = res?.data?.['this-month-zevenue'] || 0;
+      this.totalRevenue = res?.data?.['total-revenue'] || 0;
+      this.weekRevenue = res?.data?.['this-week-revenue'] || 0;
+      this.monthRevenue = res?.data?.['this-month-revenue'] || 0;
           } catch (error) {
       console.error("Error fetching accounts:", error);
     }
